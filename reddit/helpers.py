@@ -126,5 +126,5 @@ async def make_embed_from_submission(
         em.add_field(name="Content Warning", value="NSFW")
     if not has_image and not has_text:
         em.description = submission.url
-    em.set_footer(text=f"Score {submission.score}")
+    em.set_footer(text=f"{submission.score} upvotes")
     return {"embed": em, "content": post_url}
