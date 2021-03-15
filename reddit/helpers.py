@@ -68,7 +68,6 @@ async def make_embed_from_submission(
     else:
         post_url = f"{BASE_URL}{submission.permalink}"
     em = discord.Embed(title=submission.title[:256], url=f"{BASE_URL}{submission.permalink}", timestamp=submission.created_utc)
-    em.
     has_text, has_image = False, False
     kind = " post"
     if submission.is_self:
