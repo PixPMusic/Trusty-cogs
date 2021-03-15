@@ -80,7 +80,7 @@ async def make_embed_from_submission(
         kind = "n OC post"
     em.set_author(
         name=f"{submission.subreddit_name_prefixed}",
-        url=f"{BASE_URL}{subreddit.url},
+        url=f"{BASE_URL}{subreddit.url}",
         icon_url=subreddit.community_icon,
     )
     if subreddit.primary_color:
