@@ -96,7 +96,6 @@ async def make_embed_from_submission(
     if submission.selftext:
         has_text = True
         text = author_str + "\n\n" + SELF_POST_SCRUB.sub("", submission.selftext)
-    em.description(name=" ", value=f"{author_str}")
     em.description = text[:512]
     # em.add_field(name="Content Warning", value=)
     # link_str = f"[Click to see full post]({BASE_URL}{submission.permalink})"
