@@ -147,7 +147,7 @@ class Reddit(commands.Cog):
         try:
             if channel.permissions_for(channel.guild.me).embed_links:
                 if use_embed:
-                    await channel.send(post_url, embed=em)
+                    await channel.send(embed=em)
                 else:
                     await channel.send(post_url)
             elif channel.permissions_for(channel.guild.me).manage_webhooks:
