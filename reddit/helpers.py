@@ -67,7 +67,8 @@ async def make_embed_from_submission(
         post_url = f"||{BASE_URL}{submission.permalink}||"
     else:
         post_url = f"{BASE_URL}{submission.permalink}"
-    em = discord.Embed(title=submission.title[:256], timestamp=submission.created_utc)
+    em = discord.Embed(title=submission.title[:256], url=f"{BASE_URL}{submission.permalink}", timestamp=submission.created_utc)
+    em.
     has_text, has_image = False, False
     kind = " post"
     if submission.is_self:
@@ -79,8 +80,8 @@ async def make_embed_from_submission(
     if submission.is_original_content:
         kind = "n OC post"
     em.set_author(
-        name=f"A{kind} has been submitted to {submission.subreddit_name_prefixed}",
-        url=BASE_URL + submission.permalink,
+        name=f"{submission.subreddit_name_prefixed}",
+        url=BASE_URL,
         icon_url=subreddit.community_icon,
     )
     if subreddit.primary_color:
@@ -96,7 +97,7 @@ async def make_embed_from_submission(
     except Exception:
         author_name = _("Unknown or Deleted User")
         author_str = _("Unknown or Deleted User")
-    em.add_field(name="Post Author", value=author_str)
+    em.add_field(name="", value=f"Posted by {author_str}")
     # em.add_field(name="Content Warning", value=)
     # link_str = f"[Click to see full post]({BASE_URL}{submission.permalink})"
     if submission.thumbnail:
