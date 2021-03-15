@@ -86,17 +86,18 @@ async def make_embed_from_submission(
     if subreddit.primary_color:
         colour = int(subreddit.primary_color.replace("#", ""), 16)
         em.colour = discord.Colour(colour)
-    if submission.selftext:
-        has_text = True
-        text = SELF_POST_SCRUB.sub("", submission.selftext)
-        em.description = text[:512]
     try:
         author_name = await submission.author()
         author_str = f"[u/{author_name}]({BASE_URL}/u/{author_name})"
     except Exception:
         author_name = _("Unknown or Deleted User")
         author_str = _("Unknown or Deleted User")
-    em.add_field(name="", value=f"Posted by {author_str}")
+    text = author_str
+    if submission.selftext:
+        has_text = True
+        text = author_str + "\n\n" + SELF_POST_SCRUB.sub("", submission.selftext)
+    em.description(name=" ", value=f"{author_str}")
+    em.description = text[:512]
     # em.add_field(name="Content Warning", value=)
     # link_str = f"[Click to see full post]({BASE_URL}{submission.permalink})"
     if submission.thumbnail:
